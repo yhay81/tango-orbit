@@ -14,7 +14,7 @@
     "dictionary:update": "node scripts/update-dictionary.mjs",
     "release:check": "pwsh -NoLogo -NoProfile -File ops/validate-product.ps1",
     "metrics": "pwsh -NoLogo -NoProfile -File ops/product-metrics.ps1",
-    "indexnow": "pwsh -NoLogo -NoProfile -File ops/submit-indexnow.ps1 -BaseUrl https://tango-orbit.yusuke8h.workers.dev",
+    "indexnow": "pwsh -NoLogo -NoProfile -File ops/submit-indexnow.ps1 -BaseUrl https://tango-orbit.yhay81.com",
     "deploy": "npm run release:check && npm run check && npm test && npm run build && wrangler deploy",
     "cf-typegen": "wrangler types"
   },

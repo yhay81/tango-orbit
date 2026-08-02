@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tango-orbit.yusuke8h.workers.dev/sitemap.xml
+Sitemap: https://tango-orbit.yhay81.com/sitemap.xml

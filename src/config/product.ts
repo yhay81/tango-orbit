@@ -1,6 +1,6 @@
 export const PRODUCT = {
   name: "Tango Orbit",
-  origin: "https://tango-orbit.yusuke8h.workers.dev",
+  origin: "https://tango-orbit.yhay81.com",
   description: "英和・和英をすばやく引いて、関連語と単語帳を行き来する辞書。",
   repository: "https://github.com/yhay81/tango-orbit",
   dataRetentionDays: 35,
