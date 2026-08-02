@@ -124,6 +124,28 @@ describe("content-free telemetry", () => {
     expect(calls[0]?.values[0]).toMatch(/^[0-9a-f]{64}$/);
     expect(calls[0]?.values[0]).not.toBe(clientId);
     expect(calls[0]?.values[1]).toBe("searched");
+    expect(calls[0]?.values[2]).toBe(0);
+  });
+
+  it("marks automated verification separately from product use", async () => {
+    const { environment, calls } = makeEnvironment();
+    const response = await app.request(
+      "https://tango-orbit.yusuke8h.workers.dev/api/events",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Origin: "https://tango-orbit.yusuke8h.workers.dev",
+          "X-Tango-Client": clientId,
+          "X-Tango-QA": "1",
+        },
+        body: JSON.stringify({ event: "searched" }),
+      },
+      environment,
+    );
+
+    expect(response.status).toBe(202);
+    expect(calls[0]?.values[2]).toBe(1);
   });
 
   it("rejects extra fields so query text cannot be recorded", async () => {

@@ -73,11 +73,14 @@ function uniqueClientId() {
   return id;
 }
 
+const qaMode = navigator.webdriver || new URLSearchParams(location.search).has("qa");
+
 function record(event) {
   const payload = JSON.stringify({ event });
   const headers = {
     "Content-Type": "application/json",
     "X-Tango-Client": uniqueClientId(),
+    "X-Tango-QA": qaMode ? "1" : "0",
   };
   fetch("/api/events", {
     method: "POST",

@@ -114,8 +114,8 @@ app.post("/api/events", async (context) => {
   }
 
   const userHash = await hashClientId(clientId);
-  await context.env.DB.prepare("INSERT INTO events (user_hash, event_name) VALUES (?, ?)")
-    .bind(userHash, body.event)
+  await context.env.DB.prepare("INSERT INTO events (user_hash, event_name, is_qa) VALUES (?, ?, ?)")
+    .bind(userHash, body.event, context.req.header("X-Tango-QA") === "1" ? 1 : 0)
     .run();
 
   return context.body(null, 202);
